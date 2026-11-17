@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Colectivos Núñez — ¿a dónde vas?</title>
+    <meta
+      name="description"
+      content="Monitor de parada: elegí el destino y te mostramos qué colectivo tomar, la ruta y a qué hora llega."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="kiosk">
+      <header class="top">
+        <div>
+          <p class="brand">Colectivos <span>Núñez</span></p>
+          <p class="here" id="here"></p>
+        </div>
+        <p class="clock" id="clock" aria-live="polite"></p>
+      </header>
+
+      <section class="board" aria-label="Próximos colectivos en esta parada">
+        <p class="board-label">Próximos en esta parada</p>
+        <div id="board" class="board-row"></div>
+      </section>
+
+      <main>
+        <section class="ask" id="ask">
+          <h1>¿A dónde querés ir?</h1>
+          <p class="lede">Tocá un destino. Te decimos qué línea tomar, por dónde pasa y a qué hora llega a esta parada.</p>
+          <label class="search">
+            <span class="sr">Buscar destino</span>
+            <input
+              id="destination"
+              list="destination-list"
+              placeholder="Escribí: Palermo, Olivos, Retiro…"
+              autocomplete="off"
+              enterkeyhint="search"
+            />
+          </label>
+          <div id="chips" class="chips"></div>
+        </section>
+
+        <section id="trip" class="trip" hidden>
+          <div class="trip-bar">
+            <button id="back" type="button">Otro destino</button>
+            <div>
+              <h2 id="results-heading"></h2>
+              <p id="results-sub"></p>
+            </div>
+          </div>
+          <p id="empty" class="empty" hidden></p>
+          <div id="results" class="results"></div>
+        </section>
+      </main>
+
+      <footer>
+        <p>Horarios según frecuencia publicada. El tránsito puede atrasar el paso: confirmá el ramal al subir.</p>
+        <p id="stop-meta"></p>
+      </footer>
+    </div>
+
+    <datalist id="destination-list"></datalist>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
